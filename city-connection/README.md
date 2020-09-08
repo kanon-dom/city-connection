@@ -14,6 +14,13 @@ Goto to the following direction city-connection-2\city-connection
  e.g cd city-connection-2\city-connection
 mvn clean package
 
+## Run Tests
+From the build directory run the following commant
+mvn test
+
+The test coverage report is in 
+ <buildDirectory>/target/site/jacoco/index.html
+
 ## Run
 
 java -jar target/city-connection-0.0.1-SNAPSHOT.jar

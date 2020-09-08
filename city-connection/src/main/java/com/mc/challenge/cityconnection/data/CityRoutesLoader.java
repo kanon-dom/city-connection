@@ -48,7 +48,7 @@ public class CityRoutesLoader {
     public CityGraph populateCityGraph (){
         CityGraph citygraph = new CityGraph();
         Set<CityRoute> cityRoutes = loadCityRoutesFromCsvFile(CityRoute.class, cityRoutesFileName);
-        citygraph.LoadCities(cityRoutes);
+        citygraph.loadCities(cityRoutes);
         citygraph.loadCityRoutes(cityRoutes);
         return citygraph;
     }

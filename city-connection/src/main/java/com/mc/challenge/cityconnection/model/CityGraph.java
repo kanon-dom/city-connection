@@ -1,14 +1,18 @@
 package com.mc.challenge.cityconnection.model;
 
-
 import com.mc.challenge.cityconnection.data.CityRoutesLoader;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.testcontainers.shaded.org.apache.commons.lang.StringUtils;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+
 
 public class CityGraph {
     private static final Logger LOGGER = LoggerFactory.getLogger(CityGraph.class);
@@ -24,11 +28,11 @@ public class CityGraph {
 
     public void addCity(String cityName){
         if(adjacentCities.get(new City(cityName)) == null) {
-            adjacentCities.put(new City(cityName), new HashSet<City>());
+            adjacentCities.put(new City(cityName), new HashSet<>());
         }
     }
 
-    public void LoadCities(Set<CityRoute> routes){
+    public void loadCities(Set<CityRoute> routes){
         for(CityRoute cr: routes){
             this.addCity(cr.getOrigin());
             this.addCity(cr.getDestination());
@@ -83,8 +87,8 @@ public class CityGraph {
     }
 
     public Set<String> depthFirstTraversal(CityGraph graph, String root) {
-        Set<String> visited = new LinkedHashSet<String>();
-        Stack<String> stack = new Stack<String>();
+        Set<String> visited = new LinkedHashSet<>();
+        Stack<String> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             String vertex = stack.pop();
